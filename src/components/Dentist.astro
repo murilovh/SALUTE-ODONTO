@@ -1,0 +1,56 @@
+---
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import { site } from '../data/site';
+import draImg from '../assets/fotos/dra-maria-eduarda.jpg';
+---
+
+<section id="dentista" class="py-section">
+  <div class="container-page grid items-end gap-12 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-5">
+      <div data-parallax="6" class="aspect-[4/5] overflow-hidden rounded-t-organic rounded-b-soft bg-sand-200">
+        <Photo
+          src={draImg}
+          alt="Retrato da Dra. Maria Eduarda Patussi sorrindo no consultório da Salute"
+          sizes="(min-width: 1024px) 28rem, 92vw"
+          class="size-full object-cover"
+        />
+      </div>
+    </div>
+
+    <div class="lg:col-span-7 lg:pb-6">
+      <p data-reveal class="text-sm font-medium uppercase tracking-[0.14em] text-sea-700">Quem cuida de você</p>
+      <h2 data-split class="mt-4 text-display-lg">Dra. Maria Eduarda Patussi</h2>
+      <p data-reveal class="mt-6 max-w-prose text-lead text-ink-600">
+        Oi, eu sou a Duda. Gosto de explicar cada detalhe com calma, para você se sentir à vontade do começo ao fim.
+        Escolhi atender aqui, perto do mar, para cuidar da minha comunidade com o mesmo carinho que cuido da minha
+        família.
+      </p>
+      <!-- [CONFIRMAR] texto de apresentação revisado pela Dra. -->
+
+      <dl data-reveal class="mt-10 grid gap-6 sm:grid-cols-2">
+        <div>
+          <dt class="text-sm text-ink-600">Áreas de atuação</dt>
+          <dd class="mt-1 font-medium">Clínica Geral, Odontologia Estética e Reabilitadora</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-ink-600">Formação</dt>
+          <dd class="mt-1 font-medium">[CONFIRMAR formação e especializações]</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-ink-600">Registro</dt>
+          <dd class="mt-1 font-medium">{site.cro}</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-ink-600">Instagram</dt>
+          <dd class="mt-1">
+            <a href={site.instagramDentist} target="_blank" rel="noopener" class="link-arrow">
+              @dentista_mariaeduarda
+              <Icon name="ArrowUpRight" size={16} />
+            </a>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>

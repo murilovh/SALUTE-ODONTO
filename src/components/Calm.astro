@@ -1,0 +1,63 @@
+---
+// Problema -> solução
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import cadeiraImg from '../assets/fotos/consultorio-cadeira.jpg';
+
+const points = [
+  {
+    icon: 'Clock',
+    title: 'Sem pressa',
+    text: 'A consulta tem o tempo que você precisa. Dá para perguntar, respirar e entender.',
+  },
+  {
+    icon: 'HeartHandshake',
+    title: 'Explicado passo a passo',
+    text: 'Antes de cada etapa, você sabe o que vai acontecer e por quê.',
+  },
+  {
+    icon: 'Waves',
+    title: 'Um consultório tranquilo',
+    text: 'Luz natural, ambiente calmo e atendimento perto de casa, sem cara de clínica de cidade grande.',
+  },
+] as const;
+---
+
+<section class="py-section">
+  <div class="container-page grid gap-14 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-6 lg:col-start-7 lg:row-start-1 lg:pt-10">
+      <h2 data-split class="text-display-lg">Ir ao dentista não precisa ser tenso.</h2>
+      <p data-reveal class="mt-6 max-w-prose text-lead text-ink-600">
+        Muita gente adia a consulta por medo, ou porque não sabe onde encontrar um atendimento de confiança aqui
+        na região. A Salute nasceu para mudar isso.
+      </p>
+
+      <ul class="mt-12 grid gap-10">
+        {
+          points.map((p) => (
+            <li data-reveal class="grid grid-cols-[auto_1fr] gap-5">
+              <span class="grid size-12 place-items-center rounded-full bg-sea-100 text-sea-800">
+                <Icon name={p.icon} size={22} />
+              </span>
+              <span>
+                <span class="block font-display text-2xl text-sea-800">{p.title}</span>
+                <span class="mt-1 block max-w-[46ch] text-ink-600">{p.text}</span>
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="lg:col-span-5 lg:col-start-1 lg:row-start-1">
+      <div data-parallax="8" class="aspect-[4/5] overflow-hidden rounded-soft bg-sand-200 lg:sticky lg:top-28">
+        <Photo
+          src={cadeiraImg}
+          alt="Cadeira odontológica com refletor laranja e instrumentos organizados no consultório"
+          sizes="(min-width: 1024px) 30rem, 92vw"
+          class="size-full object-cover"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>

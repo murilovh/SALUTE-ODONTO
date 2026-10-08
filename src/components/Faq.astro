@@ -1,0 +1,63 @@
+---
+import Icon from './Icon.astro';
+
+// Respostas genéricas: tudo que depende da clínica está marcado com [CONFIRMAR]
+const faqs = [
+  {
+    q: 'Vocês atendem crianças?',
+    a: 'Sim, atendemos a família toda. Para os pequenos, a primeira visita é com calma, para eles se acostumarem com o ambiente. [CONFIRMAR idade mínima]',
+  },
+  {
+    q: 'Estou de férias na região. Posso ser atendido?',
+    a: 'Pode, sim. Turistas são bem-vindos. Chame no WhatsApp contando o que está sentindo e a gente encontra o melhor horário.',
+  },
+  {
+    q: 'Vocês atendem urgência?',
+    a: 'Em caso de dor ou urgência, mande uma mensagem no WhatsApp explicando o que aconteceu. Vamos fazer o possível para atender o quanto antes. [CONFIRMAR como funciona o atendimento de urgência]',
+  },
+  {
+    q: 'Como faço para agendar?',
+    a: 'Pelo WhatsApp. É só tocar em “Agendar avaliação”, contar o que você precisa e escolher um horário. O atendimento é com hora marcada.',
+  },
+  {
+    q: 'Onde fica e tem estacionamento?',
+    a: 'Na Rua da Esperança, em Ibiraquera, Imbituba. [CONFIRMAR número e ponto de referência] [CONFIRMAR estacionamento]',
+  },
+];
+---
+
+<section id="duvidas" class="bg-sand-200/60 py-section">
+  <div class="container-page grid gap-12 lg:grid-cols-12">
+    <h2 data-split class="text-display-lg lg:col-span-4">Dúvidas frequentes</h2>
+
+    <div class="lg:col-span-8" x-data="{ open: null }">
+      {
+        faqs.map((f, i) => (
+          <div data-reveal class="border-b border-sea-800/15">
+            <h3 class="font-sans text-ink-900">
+              <button
+                type="button"
+                class="flex w-full items-center justify-between gap-6 py-6 text-left text-lg font-medium md:text-xl"
+                :aria-expanded={`(open === ${i}).toString()`}
+                aria-controls={`faq-${i}`}
+                id={`faq-btn-${i}`}
+                @click={`open = open === ${i} ? null : ${i}`}
+              >
+                {f.q}
+                <span
+                  class="grid size-9 shrink-0 place-items-center rounded-full border border-sea-800/25 text-sea-800 transition-transform duration-300 ease-calm"
+                  :class={`open === ${i} && 'rotate-45'`}
+                >
+                  <Icon name="Plus" size={18} />
+                </span>
+              </button>
+            </h3>
+            <div id={`faq-${i}`} role="region" aria-labelledby={`faq-btn-${i}`} x-show={`open === ${i}`} x-collapse x-cloak>
+              <p class="max-w-prose pb-7 text-ink-600">{f.a}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

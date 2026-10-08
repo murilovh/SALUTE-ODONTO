@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.mjs';
+
+@font-face {
+  font-family: 'Erode';
+  src: url('/fonts/erode-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Erode';
+  src: url('/fonts/erode-400i.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Erode';
+  src: url('/fonts/erode-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    @apply bg-sand-50 text-ink-900 font-sans antialiased;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply text-base leading-relaxed;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-normal text-sea-800;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    @apply bg-sea-300 text-ink-900;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-sea-800);
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+  [x-cloak] {
+    display: none !important;
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-page px-gutter;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3.5 font-medium transition-[background-color,color,transform] duration-300 ease-calm active:scale-[0.98];
+}
+@utility btn-primary {
+  @apply btn bg-sea-800 text-sand-50 hover:bg-sea-900;
+}
+@utility link-arrow {
+  @apply inline-flex items-center gap-1.5 font-medium text-sea-800 underline decoration-sea-500/50 decoration-2 underline-offset-[6px] transition-colors hover:decoration-sea-800;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Estado inicial das animações: só esconde quando o JS e o movimento estão liberados */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal],
+  .js [data-split] {
+    opacity: 0;
+  }
+}
+
+/* Onda do hero */
+@keyframes wave-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.wave-drift {
+  animation: wave-drift 18s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wave-drift {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

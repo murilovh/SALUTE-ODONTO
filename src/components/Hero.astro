@@ -1,0 +1,67 @@
+---
+import Icon from './Icon.astro';
+import Photo from './Photo.astro';
+import { site } from '../data/site';
+import heroImg from '../assets/fotos/hero-sorriso.jpg';
+import luvasImg from '../assets/fotos/luvas.jpg';
+
+// Onda suave com período de 200 unidades, desenhada em 800 (2 telas). O SVG tem 200% de largura
+// e desliza -50% em loop, então a emenda é invisível.
+const wave = 'M 0 12 ' + Array.from({ length: 8 }, (_, i) => `Q ${i * 100 + 50} ${i % 2 ? 22 : 2}, ${(i + 1) * 100} 12`).join(' ');
+---
+
+<section id="topo" class="relative overflow-hidden pt-24 md:pt-28 lg:pt-24">
+  <div class="container-page grid items-center gap-12 pb-16 md:pb-24 lg:min-h-[calc(100dvh-6rem)] lg:grid-cols-12 lg:gap-8">
+    <div class="lg:col-span-7 lg:pr-6">
+      <h1 data-split data-split-now class="text-display-xl">
+        Cuidar do seu sorriso,<br class="hidden lg:inline" /> <em class="italic text-sea-700">perto do mar</em>.
+      </h1>
+      <p data-reveal class="mt-6 max-w-[34ch] text-lead text-ink-600">
+        Odontologia com excelência, comprometimento e amor. Em Ibiraquera, pertinho da Praia do Rosa.
+      </p>
+      <div data-reveal class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+        <a href={site.whatsapp} target="_blank" rel="noopener" class="btn-primary" data-hero-cta>
+          <Icon name="MessageCircle" size={20} />
+          Agendar avaliação
+        </a>
+        <a href={site.maps} target="_blank" rel="noopener" class="link-arrow">
+          Como chegar
+          <Icon name="ArrowUpRight" size={18} />
+        </a>
+      </div>
+    </div>
+
+    <div class="relative lg:col-span-5">
+      <div
+        data-parallax="6"
+        class="relative ml-auto aspect-[4/5] w-full max-w-[34rem] overflow-hidden rounded-t-[999px] rounded-b-organic bg-sand-200"
+      >
+        <Photo
+          src={heroImg}
+          alt="Paciente sorrindo com as mãos formando um coração em volta da boca"
+          sizes="(min-width: 1024px) 34rem, 92vw"
+          priority
+          class="size-full object-cover"
+        />
+      </div>
+      <div
+        data-reveal
+        class="absolute -bottom-8 left-0 hidden aspect-square w-40 overflow-hidden rounded-soft border-[6px] border-sand-50 bg-sand-200 sm:block md:w-48 lg:-left-6"
+      >
+        <Photo
+          src={luvasImg}
+          alt="Mãos com luvas verde-água abertas, prontas para o atendimento"
+          sizes="12rem"
+          widths={[240, 400]}
+          class="size-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="pointer-events-none overflow-hidden text-sea-500" aria-hidden="true">
+    <svg class="wave-drift block h-6 w-[200%]" viewBox="0 0 800 24" preserveAspectRatio="none">
+      <path d={wave} fill="none" stroke="currentColor" stroke-width="1.25" vector-effect="non-scaling-stroke" />
+    </svg>
+  </div>
+</section>

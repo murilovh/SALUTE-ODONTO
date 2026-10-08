@@ -1,0 +1,63 @@
+---
+// Sua primeira consulta (substitui a seção de preços, que não pode existir em publicidade odontológica)
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const steps = [
+  {
+    icon: 'MessageCircle',
+    title: 'Chame no WhatsApp',
+    text: 'Conte o que está sentindo ou o que gostaria de melhorar. A gente encontra um horário que funcione para você.',
+  },
+  {
+    icon: 'Smile',
+    title: 'Avaliação e conversa',
+    text: 'Um exame completo e sem pressa, com espaço para tirar todas as dúvidas.',
+  },
+  {
+    icon: 'ClipboardList',
+    title: 'Plano explicado',
+    text: 'Você recebe as opções de tratamento em linguagem simples e decide junto com a dentista.',
+  },
+  {
+    icon: 'CalendarCheck',
+    title: 'Acompanhamento',
+    text: 'Depois do tratamento, a gente continua por perto para manter tudo saudável.',
+  },
+] as const;
+---
+
+<section id="primeira-consulta" class="bg-sea-100/60 py-section">
+  <div class="container-page">
+    <h2 data-split class="text-display-lg">Sua primeira consulta</h2>
+    <p data-reveal class="mt-5 max-w-prose text-lead text-ink-600">
+      Nada de surpresa. É assim que funciona, do primeiro “oi” ao retorno.
+    </p>
+
+    <ol
+      class="relative mt-14 grid gap-10 md:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:gap-8 lg:before:absolute lg:before:left-6 lg:before:right-6 lg:before:top-6 lg:before:h-px lg:before:bg-sea-800/20 lg:before:content-['']"
+    >
+      {
+        steps.map((s, i) => (
+          <li data-reveal class="relative">
+            <span class="relative grid size-12 place-items-center rounded-full bg-sea-800 text-sand-50">
+              <Icon name={s.icon} size={20} />
+            </span>
+            <h3 class="mt-6 text-2xl">
+              <span class="sr-only">Etapa {i + 1}: </span>
+              {s.title}
+            </h3>
+            <p class="mt-2 max-w-[34ch] text-ink-600">{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div data-reveal class="mt-14 lg:mt-16">
+      <a href={site.whatsapp} target="_blank" rel="noopener" class="btn-primary">
+        <Icon name="MessageCircle" size={20} />
+        Agendar avaliação
+      </a>
+    </div>
+  </div>
+</section>

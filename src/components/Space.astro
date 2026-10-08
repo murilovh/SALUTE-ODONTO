@@ -1,0 +1,53 @@
+---
+// Galeria do espaço: bento com 4 células exatas. No mobile vira faixa com rolagem horizontal.
+import Photo from './Photo.astro';
+import recepcaoImg from '../assets/fotos/recepcao.jpg';
+import decoracaoImg from '../assets/fotos/detalhe-decoracao.jpg';
+import luvasImg from '../assets/fotos/luvas.jpg';
+import surfImg from '../assets/fotos/surf.jpg';
+
+const shots = [
+  {
+    img: recepcaoImg,
+    alt: 'Mesa clara da recepção com cartões de visita verde-água da Salute',
+    cls: 'md:col-span-4 md:row-span-2',
+  },
+  {
+    img: decoracaoImg,
+    alt: 'Mesinha de apoio com planta, toalhas e objetos de decoração do consultório',
+    cls: 'md:col-span-3',
+  },
+  {
+    img: luvasImg,
+    alt: 'Luvas verde-água sobre fundo claro',
+    cls: 'md:col-span-5',
+  },
+  {
+    img: surfImg,
+    alt: 'Surfista deslizando numa onda no mar de Santa Catarina',
+    cls: 'md:col-span-8',
+  },
+];
+---
+
+<section id="espaco" class="overflow-hidden pb-section">
+  <div class="container-page">
+    <h2 data-split class="max-w-[18ch] text-display-lg">Um consultório com jeito de praia.</h2>
+    <p data-reveal class="mt-5 max-w-prose text-lead text-ink-600">
+      Claro, silencioso e acolhedor. O mar fica a poucos minutos, e a gente gosta que você sinta isso aqui dentro.
+    </p>
+
+    <div
+      class="-mx-gutter mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-gutter pb-2 md:mx-0 md:grid md:grid-cols-12 md:auto-rows-[16rem] lg:auto-rows-[21rem] md:overflow-visible md:px-0"
+      data-lenis-prevent-horizontal
+    >
+      {
+        shots.map((s) => (
+          <figure data-reveal class:list={['aspect-[4/5] w-[78vw] shrink-0 snap-start overflow-hidden rounded-soft bg-sand-200 md:aspect-auto md:w-auto', s.cls]}>
+            <Photo src={s.img} alt={s.alt} sizes="(min-width: 768px) 50vw, 78vw" class="size-full object-cover" />
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

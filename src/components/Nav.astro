@@ -1,0 +1,84 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const links = [
+  { href: '#tratamentos', label: 'Tratamentos' },
+  { href: '#dentista', label: 'A dentista' },
+  { href: '#primeira-consulta', label: 'Primeira consulta' },
+  { href: '#duvidas', label: 'Dúvidas' },
+  { href: '#contato', label: 'Contato' },
+];
+---
+
+<div data-nav-sentinel class="absolute top-0 h-px w-px" aria-hidden="true"></div>
+<header
+  data-nav
+  x-data="{ open: false }"
+  @keydown.escape.window="open = false"
+  class="group fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ease-calm data-[scrolled]:bg-sand-50/90 data-[scrolled]:shadow-[0_1px_0_rgb(46_91_94/0.08)] data-[scrolled]:backdrop-blur-md"
+>
+  <nav class="container-page flex h-16 items-center justify-between md:h-[72px]" aria-label="Principal">
+    <a href="#topo" class="flex items-baseline gap-2 text-sea-800">
+      <span class="font-display text-[1.75rem] leading-none">Salute</span>
+      <span class="text-xs font-medium tracking-[0.12em] text-ink-600">odontologia</span>
+    </a>
+
+    <ul class="hidden items-center gap-8 lg:flex">
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} class="text-[0.9375rem] text-ink-900 transition-colors hover:text-sea-800">
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <a href={site.whatsapp} target="_blank" rel="noopener" class="btn-primary hidden !py-2.5 !px-5 sm:inline-flex">
+        <Icon name="MessageCircle" size={18} />
+        Agendar avaliação
+      </a>
+      <button
+        type="button"
+        class="grid size-11 place-items-center rounded-full text-sea-800 hover:bg-sea-800/5 lg:hidden"
+        :aria-expanded="open.toString()"
+        aria-controls="menu-mobile"
+        aria-label="Abrir menu"
+        @click="open = !open"
+      >
+        <span x-show="!open"><Icon name="Menu" size={24} /></span>
+        <span x-show="open" x-cloak><Icon name="X" size={24} /></span>
+      </button>
+    </div>
+  </nav>
+
+  <div
+    id="menu-mobile"
+    x-show="open"
+    x-cloak
+    x-transition.opacity.duration.300ms
+    class="border-t border-sea-800/10 bg-sand-50 lg:hidden"
+    data-lenis-prevent
+  >
+    <ul class="container-page flex flex-col py-4">
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} @click="open = false" class="block py-3 font-display text-2xl text-sea-800">
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-4">
+        <a href={site.whatsapp} target="_blank" rel="noopener" class="btn-primary w-full">
+          <Icon name="MessageCircle" size={18} />
+          Agendar avaliação
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>

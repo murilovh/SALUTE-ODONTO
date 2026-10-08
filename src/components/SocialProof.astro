@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<section aria-label="Avaliações no Google" class="border-y border-sea-800/10 bg-sand-100">
+  <div class="container-page flex flex-col items-start gap-3 py-6 sm:flex-row sm:items-center sm:justify-between">
+    <a
+      href={site.maps}
+      target="_blank"
+      rel="noopener"
+      class="group flex items-center gap-4 text-ink-900"
+    >
+      <span class="font-display text-4xl leading-none text-sea-800">{site.rating.value}</span>
+      <span class="flex flex-col gap-1">
+        <span class="flex gap-0.5 text-clay-500" aria-hidden="true">
+          {Array.from({ length: 5 }, () => <Icon name="Star" size={16} class="fill-current" strokeWidth={0} />)}
+        </span>
+        <span class="text-sm text-ink-600 group-hover:text-sea-800">
+          {site.rating.count} avaliações no Google
+          <span class="sr-only">, nota {site.rating.value} de 5</span>
+        </span>
+      </span>
+    </a>
+    <p class="text-sm font-medium text-ink-600">Ibiraquera <span aria-hidden="true">•</span> Praia do Rosa</p>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+---
+// Avaliações reais do Google (perfil da Salute no Maps), resumidas. Nomes abreviados por privacidade.
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const reviews = [
+  {
+    quote:
+      'Duda é muito profissional, delicada e atenciosa. Explica cada passo com clareza e me deixa tranquila durante o atendimento.',
+    name: 'Isabel R.',
+  },
+  {
+    quote: 'Excelente atendimento e atenção! A Dra. me atendeu num sábado, fim da tarde, quando solicitei a emergência.',
+    name: 'B. Andrade',
+  },
+  {
+    quote: 'A Duda é uma ótima dentista, me atendeu super bem! A clínica é um amor. Sempre faço meus tratamentos na Salute.',
+    name: 'Gabrielle O.',
+  },
+];
+---
+
+<section aria-labelledby="depoimentos-titulo" class="overflow-hidden py-section" data-embla>
+  <div class="container-page">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 id="depoimentos-titulo" data-split class="max-w-[16ch] text-display-lg">Quem já sentou na nossa cadeira</h2>
+      <div class="flex gap-2">
+        <button
+          type="button"
+          data-embla-prev
+          class="grid size-12 place-items-center rounded-full border border-sea-800/25 text-sea-800 transition hover:bg-sea-800/5 disabled:opacity-35"
+          aria-label="Depoimento anterior"
+        >
+          <Icon name="ArrowLeft" size={20} />
+        </button>
+        <button
+          type="button"
+          data-embla-next
+          class="grid size-12 place-items-center rounded-full border border-sea-800/25 text-sea-800 transition hover:bg-sea-800/5 disabled:opacity-35"
+          aria-label="Próximo depoimento"
+        >
+          <Icon name="ArrowRight" size={20} />
+        </button>
+      </div>
+    </div>
+
+    <div data-embla-viewport class="mt-12 overflow-visible" role="region" aria-roledescription="carrossel" aria-label="Depoimentos">
+      <ul class="flex touch-pan-y gap-5">
+        {
+          reviews.map((r) => (
+            <li class="min-w-0 shrink-0 grow-0 basis-[86%] sm:basis-[60%] lg:basis-[40%]" aria-roledescription="slide">
+              <figure class="flex h-full flex-col justify-between gap-10 rounded-soft bg-sand-100 p-8 md:p-10">
+                <blockquote class="font-display text-xl leading-snug text-ink-900 md:text-2xl">“{r.quote}”</blockquote>
+                <figcaption class="flex items-center justify-between gap-4 text-sm">
+                  <span class="font-medium">{r.name}</span>
+                  <span class="flex items-center gap-1 text-ink-600">
+                    <Icon name="Star" size={14} class="fill-clay-500 text-clay-500" strokeWidth={0} />
+                    Avaliação no Google
+                  </span>
+                </figcaption>
+              </figure>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <p data-embla-status class="sr-only" aria-live="polite"></p>
+
+    <a href={site.maps} target="_blank" rel="noopener" class="link-arrow mt-10">
+      Ver todas as avaliações no Google
+      <Icon name="ArrowUpRight" size={18} />
+    </a>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+// Botão flutuante só no mobile. Aparece quando o CTA do hero sai da tela, para não duplicar.
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+
+<a
+  href={site.whatsapp}
+  target="_blank"
+  rel="noopener"
+  data-fab
+  aria-label="Agendar avaliação pelo WhatsApp"
+  class="fixed bottom-4 right-4 z-30 grid size-14 translate-y-24 place-items-center rounded-full bg-sea-800 text-sand-50 shadow-[0_8px_24px_rgb(31_63_66/0.28)] transition-transform duration-500 ease-calm data-[show]:translate-y-0 md:hidden"
+  style="margin-bottom: env(safe-area-inset-bottom);"
+>
+  <Icon name="MessageCircle" size={26} />
+</a>

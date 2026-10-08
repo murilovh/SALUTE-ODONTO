@@ -1,0 +1,32 @@
+{
+  "name": "salute-odontologia",
+  "version": "1.0.0",
+  "description": "Site da Salute Odontologia, Ibiraquera / Praia do Rosa",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/murilovh/SALUTE-ODONTO.git"
+  },
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/murilovh/SALUTE-ODONTO/issues"
+  },
+  "homepage": "https://github.com/murilovh/SALUTE-ODONTO#readme",
+  "dependencies": {
+    "@alpinejs/collapse": "^3.17.4",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "alpinejs": "^3.17.4",
+    "astro": "^7.3.8",
+    "embla-carousel": "^8.6.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "lucide": "^1.53.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "private": true
+}
