@@ -84,6 +84,13 @@
 @utility btn-primary {
   @apply btn bg-sea-800 text-sand-50 hover:bg-sea-900;
 }
+/* Faixa com rolagem lateral sem a barra visível (o card seguinte aparecendo já indica que dá para deslizar) */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 @utility link-arrow {
   @apply inline-flex items-center gap-1.5 font-medium text-sea-800 underline decoration-sea-500/50 decoration-2 underline-offset-[6px] transition-colors hover:decoration-sea-800;
 }
