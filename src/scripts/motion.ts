@@ -58,7 +58,8 @@ export function initMotion() {
     const img = wrap.querySelector('img');
     if (!img) return;
     const amount = Number(wrap.dataset.parallax || 8);
-    gsap.set(img, { scale: 1 + amount / 50 });
+    // zoom mínimo para cobrir o deslocamento de ±amount/2 %, sem ampliar a foto além do necessário
+    gsap.set(img, { scale: 1 + amount / 100 });
     gsap.fromTo(
       img,
       { yPercent: -amount / 2 },

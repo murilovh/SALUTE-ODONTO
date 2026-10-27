@@ -13,15 +13,18 @@ interface Props {
 }
 
 const { src, alt, sizes, widths = [480, 720, 960, 1280], priority = false, class: className } = Astro.props;
-const usable = widths.filter((w) => w <= src.width);
+// Nunca gera versão maior que o original, mas sempre inclui o tamanho original
+// (senão telas de alta densidade recebem uma versão menor e esticam a foto).
+const usable = [...new Set([...widths.filter((w) => w < src.width), src.width])];
 ---
 
 <Picture
   src={src}
   alt={alt}
   sizes={sizes}
-  widths={usable.length ? usable : [src.width]}
+  widths={usable}
   formats={['avif', 'webp']}
+  quality={82}
   loading={priority ? 'eager' : 'lazy'}
   fetchpriority={priority ? 'high' : 'auto'}
   decoding={priority ? 'sync' : 'async'}

@@ -1,11 +1,13 @@
 ---
-// Galeria do espaço: bento com 4 células exatas. No mobile vira faixa com rolagem horizontal.
+// Galeria do espaço: 4 células exatas. No mobile vira faixa com rolagem horizontal.
 import Photo from './Photo.astro';
 import recepcaoImg from '../assets/fotos/recepcao.jpg';
 import decoracaoImg from '../assets/fotos/detalhe-decoracao.jpg';
 import luvasImg from '../assets/fotos/luvas.jpg';
 import surfImg from '../assets/fotos/surf.jpg';
 
+// Três colunas iguais: recepção e surf altos nas pontas, mesinha e luvas empilhadas no meio.
+// Nenhuma célula passa de ~1/3 da largura, então as fotos (pequenas, vindas do Instagram) não são esticadas.
 const shots = [
   {
     img: recepcaoImg,
@@ -15,17 +17,19 @@ const shots = [
   {
     img: decoracaoImg,
     alt: 'Mesinha da sala de espera com garrafa térmica, xícara, lenços, uma planta e uma pequena estátua de Buda',
-    cls: 'md:col-span-3',
-  },
-  {
-    img: luvasImg,
-    alt: 'Luvas verde-água sobre fundo claro',
-    cls: 'md:col-span-5',
+    cls: 'md:col-span-4',
   },
   {
     img: surfImg,
     alt: 'Pés de uma surfista sobre a prancha, deslizando numa onda verde-água',
-    cls: 'md:col-span-8',
+    cls: 'md:col-span-4 md:row-span-2',
+  },
+  {
+    img: luvasImg,
+    alt: 'Mãos com luvas verde-água levantadas, com os pulsos à mostra, sobre fundo claro',
+    cls: 'md:col-span-4',
+    // nas células horizontais (desktop) mostra a parte de baixo: luvas e pulsos, cortando a parede vazia
+    pos: 'md:object-bottom',
   },
 ];
 ---
@@ -38,13 +42,13 @@ const shots = [
     </p>
 
     <div
-      class="no-scrollbar -mx-gutter mt-12 flex snap-x snap-mandatory scroll-px-gutter gap-4 overflow-x-auto px-gutter md:mx-0 md:grid md:grid-cols-12 md:auto-rows-[16rem] lg:auto-rows-[21rem] md:overflow-visible md:px-0"
+      class="no-scrollbar -mx-gutter mt-12 flex snap-x snap-mandatory scroll-px-gutter gap-4 overflow-x-auto px-gutter md:mx-0 md:grid md:grid-cols-12 md:auto-rows-[13rem] lg:auto-rows-[21rem] md:overflow-visible md:px-0"
       data-lenis-prevent-horizontal
     >
       {
         shots.map((s) => (
           <figure data-reveal class:list={['aspect-[4/5] w-[78vw] shrink-0 snap-start overflow-hidden rounded-soft bg-sand-200 md:aspect-auto md:w-auto', s.cls]}>
-            <Photo src={s.img} alt={s.alt} sizes="(min-width: 768px) 50vw, 78vw" class="size-full object-cover" />
+            <Photo src={s.img} alt={s.alt} sizes="(min-width: 1280px) 25rem, (min-width: 768px) 32vw, 78vw" class={`size-full object-cover ${s.pos ?? ''}`} />
           </figure>
         ))
       }
