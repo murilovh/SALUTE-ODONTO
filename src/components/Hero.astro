@@ -31,17 +31,18 @@ const wave = 'M 0 12 ' + Array.from({ length: 8 }, (_, i) => `Q ${i * 100 + 50} 
     </div>
 
     <div class="relative lg:col-span-5">
-      <div
-        data-parallax="6"
-        class="relative ml-auto aspect-[4/5] w-full max-w-[34rem] overflow-hidden rounded-t-[999px] rounded-b-organic bg-sand-200"
-      >
-        <Photo
-          src={heroImg}
-          alt="Paciente sorrindo com as mãos formando um coração em volta da boca"
-          sizes="(min-width: 1024px) 34rem, 92vw"
-          priority
-          class="size-full object-cover"
-        />
+      <!-- foto em retângulo suave com um bloco verde-água deslocado atrás -->
+      <div class="relative ml-auto w-[calc(100%-0.75rem)] max-w-[33rem] md:w-[calc(100%-1.75rem)]">
+        <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-soft bg-sea-300 md:translate-x-7 md:translate-y-7" aria-hidden="true"></div>
+        <div data-parallax="6" class="relative aspect-[4/5] overflow-hidden rounded-soft bg-sand-200">
+          <Photo
+            src={heroImg}
+            alt="Paciente sorrindo com as mãos formando um coração em volta da boca"
+            sizes="(min-width: 1024px) 33rem, 92vw"
+            priority
+            class="size-full object-cover"
+          />
+        </div>
       </div>
     </div>
   </div>
