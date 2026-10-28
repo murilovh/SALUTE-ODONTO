@@ -3,8 +3,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  // [CONFIRMAR] domínio final (Netlify ou domínio próprio)
-  site: 'https://salute-odontologia.netlify.app',
+  // Publicado na Vercel. [CONFIRMAR] trocar se a clínica tiver domínio próprio
+  site: 'https://saluteodonto.vercel.app',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
