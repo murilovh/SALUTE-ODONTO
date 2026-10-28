@@ -1,14 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 ---
 
 <Base title="Página não encontrada | Salute Odontologia" description="Esta página não existe. Volte para o início do site da Salute Odontologia.">
   <main id="conteudo" class="container-page flex min-h-[100dvh] flex-col justify-center py-24">
-    <a href="/" class="flex items-baseline gap-2 text-sea-800">
-      <span class="font-display text-[1.75rem] leading-none">Salute</span>
-      <span class="text-xs font-medium tracking-[0.12em] text-ink-600">odontologia</span>
+    <a href="/" class="inline-flex items-center">
+      <Logo variant="horizontal" class="h-9 w-auto md:h-11" title="Salute Odontologia" />
     </a>
     <h1 class="mt-12 max-w-[16ch] text-display-lg">Essa página foi dar um mergulho.</h1>
     <p class="mt-6 max-w-prose text-lead text-ink-600">O endereço não existe ou mudou. Volte para o início ou fale com a gente pelo WhatsApp.</p>

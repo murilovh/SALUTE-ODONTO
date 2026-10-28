@@ -1,4 +1,5 @@
 ---
+import Logo from './Logo.astro';
 import Icon from './Icon.astro';
 import { site } from '../data/site';
 
@@ -19,9 +20,8 @@ const links = [
   class="group fixed inset-x-0 top-0 z-40 transition-[background-color,box-shadow] duration-500 ease-calm data-[scrolled]:bg-sand-50/90 data-[scrolled]:shadow-[0_1px_0_rgb(46_91_94/0.08)] data-[scrolled]:backdrop-blur-md"
 >
   <nav class="container-page flex h-16 items-center justify-between md:h-[72px]" aria-label="Principal">
-    <a href="#topo" class="flex items-baseline gap-2 text-sea-800">
-      <span class="font-display text-[1.75rem] leading-none">Salute</span>
-      <span class="text-xs font-medium tracking-[0.12em] text-ink-600">odontologia</span>
+    <a href="#topo" class="inline-flex items-center">
+      <Logo variant="horizontal" class="h-9 w-auto md:h-11" title="Salute Odontologia" />
     </a>
 
     <ul class="hidden items-center gap-8 lg:flex">
